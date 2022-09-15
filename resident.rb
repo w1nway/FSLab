@@ -95,3 +95,4 @@ class Main
 	raspberry_3 = Raspberry.new(3)
 	raspberries = RaspberryBush.new(raspberry_1, raspberry_2, raspberry_3)
 end
+
