@@ -60,7 +60,7 @@ class Human
 
   def initialize(name)
     @name = name
-    @plant = RaspberryBush.new(5)
+    @plant = RaspberryBush.new(1)
   end
 
   def work!
@@ -70,7 +70,7 @@ class Human
   def harvest
     if @plant.ripe_all?
       @plant.give_away_all!
-      "Gardener finished work"
+      "Congratulations, you won"
     else
       "The harvest is not ripe"
     end
@@ -90,5 +90,35 @@ if __FILE__ == $PROGRAM_NAME
     jack_wilson.work!
   end
   puts jack_wilson.harvest
+
+  #additional task
+  puts "Hello, friend. What's your name?"
+  name_of_user = gets.chomp
+
+  puts "Okay, " + name_of_user.to_s + ". You can enter:"
+  puts '1. To harvest raspberries if they are ripe.'
+  puts '2. To work that grow up your plants.'
+  puts '3. To know your knowledge base.'
+  puts '4. To finish work on the garden'
+
+  name_of_user = Human.new(name_of_user.to_s)
+  loop do
+    choice = gets.chomp
+
+    if choice == '3'
+      Human.knowledge_base
+    elsif choice == '2'
+      name_of_user.work!
+      puts "Good job! Keep going!"
+    elsif choice == '4'
+      puts "Goodbye!"
+      exit
+    elsif choice == '1'
+      puts name_of_user.harvest
+      exit
+    else
+      puts "Enter a number from 1 to 4, please"
+    end
+  end
 end
 
